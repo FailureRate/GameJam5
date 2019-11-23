@@ -8,12 +8,6 @@ public class RigidbodyEvents : MonoBehaviour
     [Header("RigidBody")]
      Rigidbody2D rb;
     [SerializeField]
-    [Header("BoxCollider2D")]
-    private BoxCollider2D box;
-    [SerializeField]
-    [Header("ContactNames")]
-    private string[] names;
-    [SerializeField]
     [Header("Speeds")]
     private float[] speeds;
 
@@ -33,21 +27,25 @@ public class RigidbodyEvents : MonoBehaviour
         
         rb.AddForce(new Vector2(-0.2f, 0), ForceMode2D.Impulse);
         if (rb.velocity.x < -6) { rb.velocity = new Vector2(-6, rb.velocity.y); }
+        rb.velocity.Normalize();
     }
     public void MoveRight()
     {
         rb.AddForce(new Vector2(0.2f, 0), ForceMode2D.Impulse);
         if (rb.velocity.x > 6) { rb.velocity = new Vector2(6, rb.velocity.y); }
+        rb.velocity.Normalize();
     }
     public void MoveUp()
     {
         rb.AddForce(new Vector2(0, 0.2f), ForceMode2D.Impulse);
         if (rb.velocity.y > 6) { rb.velocity = new Vector2(rb.velocity.x, 6.0f); }
+        rb.velocity.Normalize();
     }
     public void MoveDown()
     {
         rb.AddForce(new Vector2(0, -0.2f), ForceMode2D.Impulse);
         if (rb.velocity.y < -6) { rb.velocity = new Vector2(rb.velocity.x, -6.0f); }
+        rb.velocity.Normalize();
     }
     public void ZeroStop()
     {
@@ -55,7 +53,5 @@ public class RigidbodyEvents : MonoBehaviour
         {
             rb.velocity = new Vector2(0.0f, 0.0f);
         }
- 
-        
     }
 }
