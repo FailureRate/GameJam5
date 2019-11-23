@@ -7,6 +7,9 @@ public class FireBall : MonoBehaviour
     [SerializeField]
     [Header("Timer")]
     float timer = 0.0f;
+    [SerializeField]
+    [Header("TimeLimit")]
+    float timeLimit = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class FireBall : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= 4)
+        if(timer >= timeLimit)
         {
             timer = 0.0f;
             this.gameObject.SetActive(false);
