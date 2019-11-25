@@ -25,4 +25,9 @@ public class enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("fireball")) { enemySpawner.scoreNum += 100;enemySpawner.enemyCount--; Destroy(this.gameObject);}
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player")) { enemySpawner.playerdead = true; }
+    }
 }
